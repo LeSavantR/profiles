@@ -1,0 +1,11 @@
+# Virtual Environment
+venv/
+
+# DataBase
+*.sqlite3
+
+# migrations
+*/migrations/*
+
+# PyCache
+*/__pycache__/*
