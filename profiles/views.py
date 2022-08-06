@@ -73,6 +73,7 @@ class HelloAPIView(APIView):
 
 
 class UserProfileViewSet(ModelViewSet):
+    """ ViewSet For User Profile """
     serializer_class = UserProfileSerializer
     queryset = UserProfile.objects.all()
     authentication_classes = (TokenAuthentication,)
@@ -82,5 +83,5 @@ class UserProfileViewSet(ModelViewSet):
 
 
 class UserLogin(ObtainAuthToken):
-    """"""
+    """ Create a new auth token for user """
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES

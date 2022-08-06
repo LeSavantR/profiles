@@ -10,5 +10,5 @@ appname = 'api'
 urlpatterns = [
     path('', HelloAPIView.as_view(), name='hello'),
     path('login/', UserLogin.as_view(), name='login'),
-    path('', include(router.urls)),
+    path('v1/', include(router.urls)),
 ]

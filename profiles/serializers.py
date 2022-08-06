@@ -10,6 +10,7 @@ class HelloSerializer(Serializer):
 
 
 class UserProfileSerializer(ModelSerializer):
+    """ User Profile Serializer """
 
     class Meta:
         model = UserProfile
@@ -22,7 +23,7 @@ class UserProfileSerializer(ModelSerializer):
         }
 
     def create(self, validated_data):
-        """"""
+        """ Overriding Create Profile Function Serializer """
         user = UserProfile.objects.create_user(
             email=validated_data['email'],
             name=validated_data['name'],
@@ -31,7 +32,7 @@ class UserProfileSerializer(ModelSerializer):
         return user
 
     def update(self, instance, validated_data):
-        """"""
+        """ Overriding Update Profile Function Serializer """
         if 'password' in validated_data:
             password = validated_data.pop('password')
             instance.set_password(password)
