@@ -8,7 +8,7 @@ from django.contrib.auth.models import (
 class UserProfileManager(BaseUserManager):
     """ Manager User Profiles """
 
-    def create_user(self, email:str, name:str, password=None):
+    def create_user(self, email:str, name:str, password:str):
         if not email:
             raise ValueError('Usuario debe tener un E-Mail')
 

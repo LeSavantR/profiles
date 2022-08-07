@@ -141,7 +141,7 @@ class Requirements(Modelo):
         Required Model:
         - Item Model.
     """
-    item = models.ForeignKey(
+    item = models.OneToOneField(
         Item, on_delete=models.CASCADE,
         verbose_name='Cotizacion',
         help_text='Cotizacion a la que pertenece el Requerimiento.',
