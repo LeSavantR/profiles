@@ -41,7 +41,7 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-INSTALL_APPS = [
+THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
 ]
@@ -51,7 +51,7 @@ LOCAL_APPS = [
     'app',
 ]
 
-INSTALLED_APPS = DJANGO_APPS + INSTALL_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -83,9 +83,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE' : 10,
+    'DEFAULT_AUTHENTICATION_CLASSES' : [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    # 'DEFAULT_PERMISSION_CLASSES' : [
+    #     'rest_framework.permissions.IsAuthenticated',
+    #     'rest_framework.permissions.DjangoModelPermissions',
+    # ]
+}
 
 DATABASES = {
     'default': {
@@ -137,3 +145,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'profiles.UserProfile'
+
+APPEND_SLASH = True

@@ -2,7 +2,9 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from app.serializers import InvoiceSerializers, ItemSerializers, RequirementSerializers
+from app.serializers import (
+    InvoiceSerializers, ItemSerializers, RequirementSerializers
+)
 
 from app.models import Invoice, Item, Requirements
 
