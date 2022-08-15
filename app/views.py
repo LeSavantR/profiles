@@ -12,9 +12,12 @@ from app.models import Invoice, Item, Requirements
 class InvoiceViewSet(ModelViewSet):
     """ Invoice model Viewset """
     serializer_class = InvoiceSerializers
-    queryset = Invoice.objects.all()
     authentication_classes = [TokenAuthentication,]
     permission_classes = [IsAuthenticated,]
+
+    def get_queryset(self):
+        queryset = Invoice.objects.filter(user_create=self.request.user)
+        return queryset
 
     def perform_create(self, serializer):
         """ Create a new invoice """
@@ -24,9 +27,12 @@ class InvoiceViewSet(ModelViewSet):
 class ItemViewSet(ModelViewSet):
     """ Item model Viewset """
     serializer_class = ItemSerializers
-    queryset = Item.objects.all()
     authentication_classes = [TokenAuthentication,]
     permission_classes = [IsAuthenticated,]
+
+    def get_queryset(self):
+        queryset = Item.objects.filter(user_create=self.request.user)
+        return queryset
 
     def perform_create(self, serializer):
         """ Create a new item """
@@ -36,9 +42,12 @@ class ItemViewSet(ModelViewSet):
 class RequirementViewset(ModelViewSet):
     """ Requirements model Viewset """
     serializer_class = RequirementSerializers
-    queryset = Requirements.objects.all()
     authentication_classes = [TokenAuthentication,]
     permission_classes = [IsAuthenticated,]
+
+    def get_queryset(self):
+        queryset = Requirements.objects.filter(user_create=self.request.user)
+        return queryset
 
     def perform_create(self, serializer):
         serializer.save(user_create=self.request.user)
