@@ -6,6 +6,7 @@ docker run --name contenedor -d ubuntu:img tail -f /dev/null
 # Comandos dentro del contenedor
 docker exec -it contenedor bash
 
+
 # Image NGINX Maquina:Container
 # proxy: nombre que le doy al contenedor.
 # nginx: imagen que uso.
@@ -13,5 +14,22 @@ docker run -d --name proxy -p 8080:80 nginx
 # f: Sigue el stdout, tail: Sigue solo los ultimos registros
 docker logs -f proxy
 
+
 # Bind Mounts
+## Whitout
 docker run -d --name db mongo
+## Whit
+docker run -d --name db -v "$(pwd)"/data:/data/db mongo
+
+
+# Volumenes
+docker volume ls
+docker volume create dbdata
+docker inspect Container
+docker run -d --name db --mount src=dbdata,dst=/data/db mongo
+
+# Copia de archivos, dentro y fuera del contenedor.
+## No importa si el contenedor esta corriendo o no.
+docker run --name contenedor -d ubuntu:img tail -f /dev/null
+docker cp archivo.txt contenedor:/carpeta/copy.txt
+docker cp contenedor:/carpeta/copy.txt localtesting/new_copy.txt

@@ -9,3 +9,6 @@ venv/
 
 # PyCache
 */__pycache__/*
+
+# Ignore Database
+data/*
