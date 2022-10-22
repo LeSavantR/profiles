@@ -1,5 +1,6 @@
 #! /usr/bin/bash
 
+docker pull node:lts-alpine3.16
 # Levantar contenedor con proceso null
 docker run --name contenedor -d ubuntu:img tail -f /dev/null
 
@@ -33,3 +34,19 @@ docker run -d --name db --mount src=dbdata,dst=/data/db mongo
 docker run --name contenedor -d ubuntu:img tail -f /dev/null
 docker cp archivo.txt contenedor:/carpeta/copy.txt
 docker cp contenedor:/carpeta/copy.txt localtesting/new_copy.txt
+
+# Imagenes
+docker images
+
+## Dockerfile demo
+FROM ubuntu:latest
+RUN touch /usr/src/hola-platzi.txt
+
+## Build Docker Image
+docker build -t tag_image .
+
+## Retaggear
+docker tag old-image:old-tag new-image:new-tag
+
+## Push Image
+docker push image:tag
