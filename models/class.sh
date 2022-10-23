@@ -50,3 +50,6 @@ docker tag old-image:old-tag new-image:new-tag
 
 ## Push Image
 docker push image:tag
+
+## Dockerfile
+docker history image:tag
