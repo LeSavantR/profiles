@@ -1,9 +1,12 @@
 *.log
+.env
 .dockerignore
+*.override.yaml
 .git
+.git/
 .gitignore
 data/
 __pycache__/
 Dockerfile
-venv
-README.md
+venv/
+*.md

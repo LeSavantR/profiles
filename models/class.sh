@@ -53,3 +53,34 @@ docker push image:tag
 
 ## Dockerfile
 docker history image:tag
+
+
+# Docker Network
+docker network ls
+docker network create --attachable nombre_de_red
+docker network inspect nombre_de_red
+docker network connect nombre_de_red contenedor
+
+
+# Docker Compose
+docker compose up -d
+docker compose ps
+docker compose logs
+docker compose exec app bash      # <-- No hace falta colocar -it
+docker compose down               # <-- Baja todo y borra las redes y contenedores.
+docker compose build
+docker compose build servicio_especifico
+## Docker Compose .override.yaml
+
+
+# Administración de Docker
+docker container prune # elimina los contenedores apagados
+docker rm -f "$(docker ps -aq)"
+docker network prune
+docker volume prune
+docker system prune
+
+## Docker Stop
+docker stop container
+docker ps -l
+docker kill container
