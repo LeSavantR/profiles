@@ -84,3 +84,6 @@ docker system prune
 docker stop container
 docker ps -l
 docker kill container
+
+
+# Contenedores ejecutables

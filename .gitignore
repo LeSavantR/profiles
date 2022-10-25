@@ -12,3 +12,6 @@ venv/
 
 # Ignore Database
 data/*
+
+# Ignore Docker Compose Override
+*.override.yaml
