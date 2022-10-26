@@ -87,3 +87,5 @@ docker kill container
 
 
 # Contenedores ejecutables
+models/Dockerfile
+
