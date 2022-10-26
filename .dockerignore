@@ -1,7 +1,8 @@
 *.log
 .env
 .dockerignore
-*.override.yaml
+*.yaml
+*.yml
 .git
 .git/
 .gitignore
@@ -9,4 +10,6 @@ data/
 __pycache__/
 Dockerfile
 venv/
+models/
 *.md
+*.sqlite3
