@@ -76,7 +76,7 @@ class Invoice(Modelo):
     )
 
     @property
-    def items(self):
+    def items(self) -> models.QuerySet['Item']:
         return self.item_set.all()
 
     def __str__(self):
@@ -148,7 +148,7 @@ class Requirements(Modelo):
     )
 
     def __str__(self) -> str:
-        return f'{self.item.__str__} - Requerimiento'
+        return f'{self.item} - Requerimiento'
 
     class Meta:
         verbose_name = 'Formato de Requerimiento'
