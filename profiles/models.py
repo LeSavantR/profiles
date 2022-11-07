@@ -60,15 +60,15 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
 
-    def get_full_name(self):
+    def get_full_name(self) -> str:
         """ Get Fully Name User """
         return f'{self.name} {self.last_name}'
 
-    def get_short_name(self):
+    def get_short_name(self) -> str:
         """ Get Shorty Name User """
         return f'{self.name}'
 
-    def __str__(self):
+    def __str__(self) -> str:
         """ Get Model Instance """
         return f'{self.email}'
 

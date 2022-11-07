@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from django.db.models import Q
 
 
 class Modelo(models.Model):
@@ -79,7 +78,7 @@ class Invoice(Modelo):
     def items(self) -> models.QuerySet['Item']:
         return self.item_set.all()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.invoice_num} - {self.date}'
 
     class Meta:
@@ -128,7 +127,7 @@ class Item(Modelo):
         help_text='Valor de la cotizacion.',
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.title} - {self.date_created.strftime("%d/%m/%Y")}'
 
     class Meta:

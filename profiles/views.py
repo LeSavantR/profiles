@@ -40,7 +40,7 @@ class UserLogin(ObtainAuthToken):
     """ Create a new auth token for user """
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs) -> Response:
         serializer = self.serializer_class(
             data=request.data, context={'request' : request}
         )
@@ -63,7 +63,7 @@ class UserLogin(ObtainAuthToken):
 class UserLogout(APIView):
     """ Destroy a user token """
 
-    def get(self, request, format=None):
+    def get(self, request, format=None) -> Response:
         """ Logout a user """
         request.user.auth_token.delete()
         message = {'message' : 'User Logout'}
