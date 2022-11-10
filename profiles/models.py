@@ -30,7 +30,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     """ New Model User for DataBase System """
     id = models.UUIDField(
         primary_key=True,
-        default=uuid.uuid4(),
+        default=uuid.uuid4,
         editable=False
     )
     email = models.EmailField(

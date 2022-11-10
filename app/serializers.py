@@ -1,10 +1,9 @@
 from rest_framework.serializers import (
-    ModelSerializer, StringRelatedField,
-    ListSerializer
+    ListSerializer, ModelSerializer, StringRelatedField
 )
 
-from profiles.serializers import UserProfileSerializer
 from app.models import Invoice, Item, Requirements
+from profiles.serializers import UserProfileSerializer
 
 
 class InvoiceSerializers(ModelSerializer):

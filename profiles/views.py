@@ -1,16 +1,19 @@
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.filters import SearchFilter
+from rest_framework.response import Response
+from rest_framework.settings import api_settings
+from rest_framework.status import (
+    HTTP_200_OK, HTTP_201_CREATED,
+    HTTP_400_BAD_REQUEST
+)
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.response import Response
-from rest_framework.filters import SearchFilter
-from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_400_BAD_REQUEST
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.authtoken.models import Token
-from rest_framework.settings import api_settings
 
 from profiles.models import UserProfile
-from profiles.serializers import UserProfileSerializer
 from profiles.permissions import UpdateOwnProfile
+from profiles.serializers import UserProfileSerializer
 
 #
 # APIView: Usa metodos estandar [GET,POST]
