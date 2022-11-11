@@ -10,6 +10,7 @@ RUN pip install -r requirements.txt
 COPY [".", "/usr/src/app/"]
 
 RUN python3 manage.py makemigrations app profiles
+# RUN python3 manage.py migrate
 RUN python3 manage.py collectstatic
 
 EXPOSE 8000

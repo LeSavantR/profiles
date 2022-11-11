@@ -1,15 +1,21 @@
+# Register
 *.log
+
+# Project Files
 .env
-.dockerignore
-*.yaml
-*.yml
 .git
 .git/
 .gitignore
 data/
 __pycache__/
-Dockerfile
+migrations/
 venv/
 models/
 *.md
 *.sqlite3
+
+# Internal Dockerfiles
+Dockerfile
+.dockerignore
+*.yaml
+*.yml
