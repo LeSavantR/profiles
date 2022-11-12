@@ -1,8 +1,8 @@
 FROM python:3.11-alpine3.16
 
-WORKDIR /usr/src/app
-
 RUN apk add gcc g++ cmake make mupdf-dev freetype-dev
+
+WORKDIR /usr/src/app
 
 COPY ["requirements.txt", "."]
 

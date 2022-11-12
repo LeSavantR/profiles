@@ -2,7 +2,6 @@
 *.log
 
 # Project Files
-.env
 .git
 .git/
 .gitignore
