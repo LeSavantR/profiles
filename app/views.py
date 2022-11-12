@@ -2,10 +2,9 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 
-from app.models import Invoice, Item, Requirements
+from app.models import Invoice, Item
 from app.serializers import (
-    InvoiceSerializers, ItemSerializers,
-    RequirementSerializers
+    InvoiceSerializers, ItemSerializers
 )
 
 
@@ -36,18 +35,4 @@ class ItemViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         """ Create a new item """
-        serializer.save(user_create=self.request.user)
-
-
-class RequirementViewset(ModelViewSet):
-    """ Requirements model Viewset """
-    serializer_class = RequirementSerializers
-    authentication_classes = [TokenAuthentication,]
-    permission_classes = [IsAuthenticated,]
-
-    def get_queryset(self):
-        queryset = Requirements.objects.filter(user_create=self.request.user)
-        return queryset
-
-    def perform_create(self, serializer):
         serializer.save(user_create=self.request.user)

@@ -3,6 +3,9 @@ version: "2.12.0"
 services:
   invoice:
     image: profiles:v1
+    volumes:
+      - mdata:/usr/src/app/media
+      - sdata:/usr/src/app/static
     depends_on:
       - db
     ports:
@@ -17,5 +20,17 @@ services:
       POSTGRES_PASSWORD: 22091431
       POSTGRES_DB: profiles
 
+  www:
+    image: engine:v1
+    volumes:
+      - sdata:/usr/src/app/static
+      - mdata:/usr/src/app/media
+    ports:
+      - 1337:80
+    depends_on:
+      - invoice
+
 volumes:
+  sdata:
+  mdata:
   dbdata:

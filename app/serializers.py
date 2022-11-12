@@ -2,7 +2,7 @@ from rest_framework.serializers import (
     ListSerializer, ModelSerializer, StringRelatedField
 )
 
-from app.models import Invoice, Item, Requirements
+from app.models import Invoice, Item
 from profiles.serializers import UserProfileSerializer
 
 
@@ -46,20 +46,6 @@ class ItemSerializers(ModelSerializer):
             'materials', 'method', 'value',
             'user_create', 'date_created',
         ]
-        extra_kwargs = {
-            'user_create' : {'read_only': True},
-            'date_created' : {'read_only': True},
-        }
-
-
-class RequirementSerializers(ModelSerializer):
-    """ Requirements Serializers """
-    user_create = StringRelatedField(read_only=True)
-    item = StringRelatedField(many=False, read_only=True)
-
-    class Meta:
-        model = Requirements
-        fields = '__all__'
         extra_kwargs = {
             'user_create' : {'read_only': True},
             'date_created' : {'read_only': True},

@@ -1,3 +1,5 @@
+import uuid
+
 from django.conf import settings
 from django.db import models
 
@@ -10,6 +12,11 @@ class Modelo(models.Model):
         - Created Date.
         - Modified Date.
     """
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
     enabled = models.BooleanField(
         verbose_name='Habilitado?',
         default=True,
@@ -106,6 +113,12 @@ class Item(Modelo):
         max_length=100, blank=False,
         help_text='Titulo de la cotizacion.',
     )
+    location = models.CharField(
+        verbose_name='Ubicacion',
+        max_length=100, blank=True,
+        null=True, default='',
+        help_text='Ubicacion del lugar de trabajo.'
+    )
     context = models.TextField(
         verbose_name='Descripción',
         max_length=500, blank=False,
@@ -123,7 +136,7 @@ class Item(Modelo):
         help_text='Cobro de la cotizacion.',
     )
     value = models.IntegerField(
-        verbose_name='Valor', blank=False,
+        verbose_name='Valor Total', blank=False,
         help_text='Valor de la cotizacion.',
     )
 
@@ -133,23 +146,3 @@ class Item(Modelo):
     class Meta:
         verbose_name = 'Cotizacion'
         verbose_name_plural = 'Cotizaciones'
-
-
-class Requirements(Modelo):
-    """
-        Required Model:
-        - Item Model.
-    """
-    item = models.OneToOneField(
-        Item, on_delete=models.CASCADE,
-        verbose_name='Cotizacion',
-        help_text='Cotizacion a la que pertenece el Requerimiento.',
-    )
-
-    def __str__(self) -> str:
-        return f'{self.item} - Requerimiento'
-
-    class Meta:
-        verbose_name = 'Formato de Requerimiento'
-        verbose_name_plural = 'Formatos de Requerimientos'
-
