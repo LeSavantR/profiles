@@ -20,13 +20,13 @@ services:
       POSTGRES_PASSWORD: 22091431
       POSTGRES_DB: profiles
 
-  # www:
+  # proxy:
   #   image: engine:v1
   #   volumes:
   #     - sdata:/usr/src/app/static
   #     - mdata:/usr/src/app/media
   #   ports:
-  #     - 1337:80
+  #     - 9000:80
   #   depends_on:
   #     - invoice
 
